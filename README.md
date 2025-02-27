@@ -1,6 +1,3 @@
-
-
-```markdown
 # Ransomware Simulation Project
 
 This project simulates the behavior of ransomware to help you understand how ransomware attacks operate. The simulation demonstrates file encryption, creation of ransom notes, and command-and-control (C2) server communication. The goal is to understand the basic mechanics of a ransomware attack and develop more robust defenses.
@@ -41,51 +38,42 @@ The ransomware communicates with the C2 server by sending the encryption key aft
 To install the necessary dependencies, run:
 ```bash
 pip install cryptography
-```
-
-## Usage
-
-### 1. **Run the C2 Server**:
+Usage
+1. Run the C2 Server:
 Start the C2 server, which listens for incoming connections:
-```bash
+
+bash
+
 python c2_server.py
-```
-
-### 2. **Run the Ransomware Simulation**:
+2. Run the Ransomware Simulation:
 Execute the ransomware simulation script:
-```bash
+
+bash
+
 python ransom.py
-```
 This will:
-- Encrypt all files in the specified target directory.
-- Generate a ransom note (`payransom.txt`) with the encryption key.
-- Send the encryption key to the C2 server.
 
-### 3. **Decrypt the Files**:
+Encrypt all files in the specified target directory.
+Generate a ransom note (payransom.txt) with the encryption key.
+Send the encryption key to the C2 server.
+3. Decrypt the Files:
 To decrypt the files, run the decryption script and provide the decryption key from the ransom note:
-```bash
+
+bash
+
 python decrypt.py
-```
-The decryption will restore the original files by removing the `.locked` extension.
+The decryption will restore the original files by removing the .locked extension.
 
-## Important Notes
+Important Notes
+⚠️ Antivirus/Windows Defender: Running this script on your local machine will likely trigger antivirus software (e.g., Windows Defender) and could flag the files as malicious. To avoid interference, add an exclusion for the files if you're testing in a controlled environment. This is important for testing purposes only!
 
-⚠️ **Antivirus/Windows Defender**: Running this script on your local machine will likely trigger antivirus software (e.g., Windows Defender) and could flag the files as malicious. To avoid interference, add an exclusion for the files if you're testing in a controlled environment. This is important for testing purposes only!
+Ethical Disclaimer:
+This project is for educational and testing purposes only. Do not run this script on any system without permission. Unauthorized access and encryption of files are illegal and unethical.
 
-### **Ethical Disclaimer**:
-This project is for educational and testing purposes only. Do **not** run this script on any system without permission. Unauthorized access and encryption of files are illegal and unethical.
-
-## Project Structure
-
-- `c2_server.py`: Simulates the Command-and-Control (C2) server that listens for incoming connections and receives the encryption key.
-- `ransom.py`: The ransomware script that encrypts files and creates the ransom note.
-- `decrypt.py`: The decryption script that restores the original files using the encryption key.
-- `payransom.txt`: The ransom note with the encryption key and decryption instructions.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
-
-
-
+Project Structure
+c2_server.py: Simulates the Command-and-Control (C2) server that listens for incoming connections and receives the encryption key.
+ransom.py: The ransomware script that encrypts files and creates the ransom note.
+decrypt.py: The decryption script that restores the original files using the encryption key.
+payransom.txt: The ransom note with the encryption key and decryption instructions.
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
