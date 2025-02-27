@@ -1,4 +1,4 @@
-Sure! Here’s a **README.md** template for your **Ransomware Simulation Project** on GitHub:
+
 
 ```markdown
 # Ransomware Simulation Project
