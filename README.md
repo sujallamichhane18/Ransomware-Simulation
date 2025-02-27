@@ -7,7 +7,7 @@ This project simulates the behavior of ransomware to help you understand how ran
 - **File Encryption**: Files in a specified target directory are encrypted using **Fernet symmetric encryption**, and a `.locked` extension is appended.
 - **Ransom Note Creation**: A ransom note (`payransom.txt`) is created with the encryption key and instructions on how to pay for the decryption key.
 - **Simulated C2 Communication**: The encryption key is sent to a simulated C2 server (`c2_server.py`), mimicking how real-world ransomware communicates with attackers.
-- **Decryption**: Files can be decrypted using a decryption key provided in the ransom note (`decrypt.py`).
+- **Decryption**: Files can be decrypted using a decryption key provided in the ransom note (`decrypt_ransomware.py`).
 
 ## How It Works
 
@@ -25,7 +25,7 @@ The `ransomware.py` script does the following:
 Files are encrypted using Fernet encryption. After encryption, the files will have a `.locked` extension, and the original files are deleted.
 
 ### 4. **Decryption**:
-The `decrypt.py` script can decrypt the encrypted files using the decryption key from the ransom note. The `.locked` extension will be removed, and the original files will be restored.
+The `decrypt_ransomware.py` script can decrypt the encrypted files using the decryption key from the ransom note. The `.locked` extension will be removed, and the original files will be restored.
 
 ### 5. **C2 Communication**:
 The ransomware communicates with the C2 server by sending the encryption key after encrypting the files. This simulates real-world ransomware sending critical information back to an attacker-controlled server.
