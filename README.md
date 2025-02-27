@@ -71,8 +71,7 @@ This project is for educational and testing purposes only. Do not run this scrip
 
 Project Structure
 c2_server.py: Simulates the Command-and-Control (C2) server that listens for incoming connections and receives the encryption key.
-ransom.py: The ransomware script that encrypts files and creates the ransom note.
-decrypt.py: The decryption script that restores the original files using the encryption key.
+ransomware.py: The ransomware script that encrypts files and creates the ransom note.
+decrypt_ransomware.py: The decryption script that restores the original files using the encryption key.
 payransom.txt: The ransom note with the encryption key and decryption instructions.
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+
