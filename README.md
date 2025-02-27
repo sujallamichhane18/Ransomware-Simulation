@@ -1,85 +1,91 @@
-Ransomware Simulation Project
-This project simulates the behavior of ransomware, focusing on file encryption, the creation of ransom notes, and command-and-control (C2) server communication. The simulation provides insights into how ransomware encrypts files, how keys are sent to C2 servers, and how encrypted files can be decrypted using the provided key.
+Sure! Here’s a **README.md** template for your **Ransomware Simulation Project** on GitHub:
 
-Overview
-The ransomware simulation is written in Python and demonstrates:
+```markdown
+# Ransomware Simulation Project
 
-File encryption using Fernet symmetric encryption.
-Creation of ransom notes with decryption instructions.
-Simulated communication with a C2 server, where the encryption key is exfiltrated.
-Decryption of encrypted files using the encryption key.
-The goal is to understand the basic mechanisms of a ransomware attack and to build more robust defenses against such threats.
+This project simulates the behavior of ransomware to help you understand how ransomware attacks operate. The simulation demonstrates file encryption, creation of ransom notes, and command-and-control (C2) server communication. The goal is to understand the basic mechanics of a ransomware attack and develop more robust defenses.
 
-How It Works
-1. Server Listening
-The C2 server listens for incoming connections from infected machines. Once the ransomware script is executed, it connects to the C2 server and sends important data, including the encryption key.
+## Features
 
-2. Running the Ransomware Script
-The script ransom.py is responsible for:
+- **File Encryption**: Files in a specified target directory are encrypted using **Fernet symmetric encryption**, and a `.locked` extension is appended.
+- **Ransom Note Creation**: A ransom note (`payransom.txt`) is created with the encryption key and instructions on how to pay for the decryption key.
+- **Simulated C2 Communication**: The encryption key is sent to a simulated C2 server (`c2_server.py`), mimicking how real-world ransomware communicates with attackers.
+- **Decryption**: Files can be decrypted using a decryption key provided in the ransom note (`decrypt.py`).
 
-Scanning the specified target directory.
-Encrypting files using Fernet encryption, appending a .locked extension to the files.
-Creating a ransom note (payransom.txt) containing the decryption key and instructions.
-3. File Encryption
-All files in the specified target directory are encrypted. After encryption, only the .locked files remain, and the original files are deleted.
+## How It Works
 
-4. Decryption Using Key
-The decryption script (decrypt.py) can be used to recover the original files by entering the encryption key provided in the ransom note. This will remove the .locked extension and restore the files.
+### 1. **Server (C2) Listening**:
+The C2 server listens for incoming connections from infected machines. When the ransomware script is executed, it connects to the C2 server and sends the encryption key.
 
-5. C2 Communication
-After the encryption, the encryption key is sent to the C2 server, mimicking how real-world ransomware attacks send stolen keys to an attacker-controlled server.
+### 2. **Running the Ransomware Script**:
+The `ransom.py` script does the following:
+- Scans the specified target directory.
+- Encrypts the files using **Fernet encryption**.
+- Creates a ransom note (`payransom.txt`) containing the decryption key and instructions.
+- Sends the encryption key to the C2 server.
 
-Important Notes
-⚠️ Windows Defender / Antivirus Software:
-Running this script on your local machine will likely trigger antivirus software (e.g., Windows Defender) and could flag the files as malicious. Make sure to add an exclusion for the files if you're testing in a controlled environment to avoid interference. This is important for testing purposes only!
+### 3. **File Encryption**:
+Files are encrypted using Fernet encryption. After encryption, the files will have a `.locked` extension, and the original files are deleted.
 
-Project Structure
-c2_server.py: Simulates the Command-and-Control (C2) server that listens for incoming connections and receives the encryption key from the ransomware script.
-ransom.py: The ransomware script that encrypts files in the target directory and creates the ransom note with the decryption key.
-decrypt.py: The decryption script that takes the provided decryption key and restores the encrypted files.
-payransom.txt: The ransom note that includes the decryption key and ransom instructions.
-Requirements
-Python 3.x
-cryptography library (for Fernet encryption)
-To install the necessary dependencies, run the following:
+### 4. **Decryption**:
+The `decrypt.py` script can decrypt the encrypted files using the decryption key from the ransom note. The `.locked` extension will be removed, and the original files will be restored.
 
-bash
-Copy
-Edit
+### 5. **C2 Communication**:
+The ransomware communicates with the C2 server by sending the encryption key after encrypting the files. This simulates real-world ransomware sending critical information back to an attacker-controlled server.
+
+## Requirements
+
+- Python 3.x
+- `cryptography` library (for Fernet encryption)
+
+To install the necessary dependencies, run:
+```bash
 pip install cryptography
-Usage
-1. Run the C2 Server
-First, start the C2 server by running:
+```
 
-bash
-Copy
-Edit
+## Usage
+
+### 1. **Run the C2 Server**:
+Start the C2 server, which listens for incoming connections:
+```bash
 python c2_server.py
-This will start the server, which will listen for incoming connections from the ransomware script.
+```
 
-2. Run the Ransomware Simulation
+### 2. **Run the Ransomware Simulation**:
 Execute the ransomware simulation script:
-
-bash
-Copy
-Edit
+```bash
 python ransom.py
+```
 This will:
+- Encrypt all files in the specified target directory.
+- Generate a ransom note (`payransom.txt`) with the encryption key.
+- Send the encryption key to the C2 server.
 
-Encrypt all files in the specified target directory.
-Generate a ransom note (payransom.txt) with the encryption key.
-Send the encryption key to the C2 server.
-3. Decryption
-To decrypt the files, run the decryption script and provide the decryption key (from the ransom note):
-
-bash
-Copy
-Edit
+### 3. **Decrypt the Files**:
+To decrypt the files, run the decryption script and provide the decryption key from the ransom note:
+```bash
 python decrypt.py
-The decryption will restore the original files by removing the .locked extension.
+```
+The decryption will restore the original files by removing the `.locked` extension.
 
-Disclaimer
-This project is for educational and testing purposes only. Do not run this script on any system without permission. Unauthorized access and encryption of files is illegal and unethical.
+## Important Notes
 
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+⚠️ **Antivirus/Windows Defender**: Running this script on your local machine will likely trigger antivirus software (e.g., Windows Defender) and could flag the files as malicious. To avoid interference, add an exclusion for the files if you're testing in a controlled environment. This is important for testing purposes only!
+
+### **Ethical Disclaimer**:
+This project is for educational and testing purposes only. Do **not** run this script on any system without permission. Unauthorized access and encryption of files are illegal and unethical.
+
+## Project Structure
+
+- `c2_server.py`: Simulates the Command-and-Control (C2) server that listens for incoming connections and receives the encryption key.
+- `ransom.py`: The ransomware script that encrypts files and creates the ransom note.
+- `decrypt.py`: The decryption script that restores the original files using the encryption key.
+- `payransom.txt`: The ransom note with the encryption key and decryption instructions.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+```
+
+
+
