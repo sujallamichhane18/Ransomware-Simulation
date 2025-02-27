@@ -15,7 +15,7 @@ This project simulates the behavior of ransomware to help you understand how ran
 The C2 server listens for incoming connections from infected machines. When the ransomware script is executed, it connects to the C2 server and sends the encryption key.
 
 ### 2. **Running the Ransomware Script**:
-The `ransom.py` script does the following:
+The `ransomware.py` script does the following:
 - Scans the specified target directory.
 - Encrypts the files using **Fernet encryption**.
 - Creates a ransom note (`payransom.txt`) containing the decryption key and instructions.
@@ -48,7 +48,6 @@ python c2_server.py
 2. Run the Ransomware Simulation:
 Execute the ransomware simulation script:
 
-bash
 
 python ransom.py
 This will:
@@ -59,7 +58,7 @@ Send the encryption key to the C2 server.
 3. Decrypt the Files:
 To decrypt the files, run the decryption script and provide the decryption key from the ransom note:
 
-bash
+
 
 python decrypt.py
 The decryption will restore the original files by removing the .locked extension.
